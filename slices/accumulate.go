@@ -6,7 +6,7 @@ import (
 
 // Accumulate accumulates elements in the slice based on a specified ID function and accumulation function.
 // It combines elements with the same ID using the accumulation function.
-func Accumulate[T any](ts []T, accumulateFn func(T, T) T, idFn func(T) any) []T {
+func Accumulate[S ~[]T, T any](ts S, accumulateFn func(T, T) T, idFn func(T) any) S {
 	if len(ts) < 2 {
 		return ts
 	}
